@@ -8,25 +8,20 @@
 import XCTest
 
 final class TravelUITestsLaunchTests: XCTestCase {
-
-    override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
+    
+    private var app: XCUIApplication!
+    
+    override func setUp() {
+        super.setUp()
+        
+        self.app = XCUIApplication()
+        self.app.launch()
     }
-
-    override func setUpWithError() throws {
-        continueAfterFailure = false
+    
+    func test_open_JourneyDetailsView() {
+        
+        let GoButton = self.app.buttons["Go"]
+        GoButton.tap()
     }
-
-    func testLaunch() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-        // Insert steps here to perform after app launch but before taking a screenshot,
-        // such as logging into a test account or navigating somewhere in the app
-
-        let attachment = XCTAttachment(screenshot: app.screenshot())
-        attachment.name = "Launch Screen"
-        attachment.lifetime = .keepAlways
-        add(attachment)
-    }
+ 
 }
